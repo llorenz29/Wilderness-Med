@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgetown Wilderness Medicine</title>
+<meta name="description" content="The Georgetown School of Medicine Wilderness Medicine Group: hands-on workshops, field trips and seminars on medicine where there is no hospital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: outdoorsy and confident, a club site with the polish of a CME conference page.
+   IDEA: a trailhead sign at dusk; the page is the view from the Hilltop out to the ridges.
+   PICTURE: layered sunset scene drawn from the GUSOM "G" logo: gold sky, rust ridges, pine treeline.
+   COLOUR and TYPE: logo palette (gold, rust, pine, stone gray); Raleway as on the IronMed site.
+   LAYOUT: IronMed skeleton (sticky bar, centered medallion hero, facts row, tagged bands of cards)
+           plus wilderness-medicine.com's dated event list, workshop grid and faculty row. */
+:root{
+  color-scheme:light dark;
+  --gold:#f0a93b; --gold-2:#f7c46a; --rust:#b4573a; --mauve:#8c4f4a; --pine:#17323f; --pine-2:#21485a; --stone:#7a766f;
+  --bg:light-dark(#ffffff,#0f1c23);
+  --bg-alt:light-dark(#fbf4e8,#132630);
+  --card:light-dark(#ffffff,#1a313d);
+  --ink:light-dark(#1d2326,#eef0ee);
+  --muted:light-dark(#5a5f61,#aab6b9);
+  --line:light-dark(#eadfcd,#27424f);
+  --shadow:light-dark(0 10px 30px rgba(23,50,63,.10),0 10px 30px rgba(0,0,0,.35));
+  --font:"Raleway",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-weight:400;font-size:17px;line-height:1.6;overflow-x:clip}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.1;text-wrap:balance}
+p{margin:0}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(23,50,63,.97);color:#fff;border-bottom:3px solid var(--gold)}
+.nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:9px;padding-bottom:9px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900;letter-spacing:.05em;text-transform:uppercase;font-size:1rem;line-height:1.05}
+.brand img{width:40px;height:40px;border-radius:50%;background:#fff}
+.brand small{display:block;font-weight:700;font-size:.66rem;letter-spacing:.16em;color:var(--gold-2)}
+.nav nav{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
+.nav nav a{text-decoration:none;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+.nav nav a:not(.btn){padding:10px 12px;border-radius:6px;transition:background .15s,color .15s}
+.nav nav a:not(.btn):hover{background:#fff;color:var(--pine)}
+.nav nav .btn{margin-left:8px;padding:9px 20px;font-size:.78rem;box-shadow:none}
+
+/* buttons */
+.btn{display:inline-block;text-decoration:none;font-weight:800;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;
+  padding:15px 30px;border-radius:50px;border:2px solid transparent;transition:transform .15s;cursor:pointer;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+.btn-gold{background:var(--gold);color:var(--pine)}
+.btn-pine{background:var(--pine);color:#fff}
+.btn-line{border-color:var(--pine);color:var(--pine)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:var(--pine);text-align:center;padding:48px 0 clamp(190px,26vw,300px);
+  background:linear-gradient(180deg,#fbe3b0 0%,#f7c46a 38%,#f0a93b 70%,#e48f3a 100%)}
+.scene{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(220px,32vw,380px);display:block}
+.hero .wrap{position:relative;z-index:1}
+.medal{width:120px;height:120px;border-radius:50%;background:#fff;margin:0 auto 22px;overflow:hidden;
+  box-shadow:0 0 0 4px rgba(255,255,255,.55),0 14px 30px rgba(120,60,20,.30)}
+.medal img{width:100%;height:100%;display:block}
+.eyebrow{font-weight:800;font-size:.8rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mauve)}
+h1{font-size:clamp(2.4rem,8vw,4.8rem);font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin:12px 0 8px;line-height:1}
+.dateline{font-weight:800;font-style:italic;font-size:clamp(1rem,2.6vw,1.25rem);color:var(--mauve)}
+.hero p.lead{max-width:52ch;margin:20px auto 0;font-size:1.15rem;font-weight:500;color:#3a3330}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
+.next{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;margin-top:26px;background:rgba(255,255,255,.55);
+  border-radius:40px;padding:9px 20px;font-size:.92rem;font-weight:600;backdrop-filter:blur(4px)}
+.next b{font-weight:800;color:var(--rust);text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;align-self:center}
+
+.facts-band{background:var(--pine);color:#fff}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding:8px 24px 34px;margin:0 auto;max-width:1140px}
+.facts dt{font-style:italic;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
+.facts dd{margin:6px 0 0;font-weight:700;font-size:1rem}
+
+/* sections */
+section{padding:76px 0}
+.alt{background:var(--bg-alt)}
+.dark{background:var(--pine);color:#fff}
+.tag{display:inline-block;background:var(--gold);color:var(--pine);font-weight:800;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:7px 12px;border-radius:4px;margin-bottom:16px}
+h2{font-size:clamp(2rem,5vw,2.8rem)}
+h3{font-size:1.18rem}
+.intro{max-width:62ch;margin-top:16px;font-size:1.08rem;color:var(--muted)}
+.dark .intro{color:rgba(255,255,255,.82)}
+.note{margin-top:14px;font-size:.85rem;color:var(--muted);font-style:italic}
+.dark .note{color:rgba(255,255,255,.6)}
+
+.split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:48px;align-items:center}
+.goes{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px;max-width:60ch}
+.goes li{padding-left:16px;border-left:4px solid var(--gold);color:var(--muted)}
+.goes strong{color:var(--ink);font-weight:800}
+.terrain{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.terrain div{background:var(--card);border-radius:16px;padding:20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;font-weight:800}
+.terrain svg{flex:none;width:44px;height:44px}
+
+/* events */
+.events{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:16px}
+.event{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:22px;align-items:center;background:var(--card);border-radius:16px;padding:18px 22px 18px 18px;box-shadow:var(--shadow)}
+.cal{background:var(--pine);color:#fff;border-radius:12px;text-align:center;padding:10px 0 12px;line-height:1}
+.cal span{display:block;font-weight:800;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2)}
+.cal b{display:block;font-weight:900;font-size:2.1rem;margin-top:6px}
+.event h3{margin-bottom:4px}
+.event .where{font-style:italic;font-weight:700;color:var(--rust);font-size:.95rem}
+.event p{color:var(--muted);font-size:.98rem;margin-top:4px}
+.pill{display:inline-block;font-weight:800;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:30px;background:var(--bg-alt);color:var(--ink);margin-left:6px;vertical-align:middle;white-space:nowrap}
+.event .btn{padding:11px 20px;font-size:.78rem;white-space:nowrap}
+.empty{margin-top:30px;color:var(--muted)}
+
+/* workshops */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:40px}
+.card{background:var(--card);border-radius:16px;padding:26px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--rust)}
+.card p{color:var(--muted);font-size:.97rem}
+.icon{width:46px;height:46px;border-radius:12px;background:var(--bg-alt);display:grid;place-items:center}
+.icon svg{width:28px;height:28px;fill:none;stroke:var(--rust);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* elective */
+.elective{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:10px}
+.stops{list-style:none;margin:34px 0 0;padding:0;position:relative}
+.stops::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;border-left:3px dashed rgba(247,196,106,.55)}
+.stops li{position:relative;padding:0 0 26px 44px}
+.stops li::before{content:"";position:absolute;left:2px;top:4px;width:18px;height:18px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px var(--pine)}
+.stops b{display:block;font-weight:800;font-size:1.1rem}
+.stops span{color:rgba(255,255,255,.78);font-size:.98rem}
+.ecard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--gold);border-radius:16px;padding:28px 26px}
+.ecard h3{color:var(--gold-2);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin:22px 0 8px}
+.ecard h3:first-child{margin-top:0}
+.ecard p,.ecard li{color:rgba(255,255,255,.84);font-size:.98rem}
+.ecard ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.dark a.more{color:var(--gold-2);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+.person{background:var(--card);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:center}
+.avatar{flex:none;width:64px;height:64px;border-radius:50%;background:linear-gradient(160deg,var(--gold) 0 45%,var(--rust) 45% 70%,var(--pine) 70%);
+  display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.2rem;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.person b{display:block;font-weight:800}
+.person span{display:block;color:var(--muted);font-size:.92rem;line-height:1.4;margin-top:2px}
+.sub-h{margin-top:48px;font-size:1.3rem}
+
+/* resources + join */
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.res a{display:block;text-decoration:none;background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border-left:4px solid var(--gold)}
+.res a:hover{outline:2px solid var(--gold)}
+.res b{display:block;font-weight:800}
+.res span{color:var(--muted);font-size:.94rem}
+.panel{margin-top:48px;background:var(--rust);color:#fff;border-radius:16px;padding:34px 30px;display:flex;flex-wrap:wrap;gap:18px 36px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.panel p{color:rgba(255,255,255,.9);margin-top:8px;max-width:54ch}
+.panel .email{font-weight:800;overflow-wrap:anywhere}
+.panel .btn{background:#fff;color:var(--rust)}
+
+footer{background:var(--pine);color:#fff;padding:56px 0 40px;font-size:.95rem;border-top:3px solid var(--gold)}
+footer .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px}
+footer h4{margin:0 0 10px;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer p{color:rgba(255,255,255,.78)}
+.disclaim{margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.6)}
+
+@media (max-width:960px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .people,.res{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split,.elective{grid-template-columns:minmax(0,1fr)}
+  footer .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  section{padding:60px 0}
+  .nav nav a:not(.btn){display:none}
+  .brand small{display:none}
+  .nav .wrap{flex-wrap:nowrap}
+  .brand{font-size:.9rem}
+  h1{letter-spacing:.04em}
+  .cards,.people,.res,.terrain{grid-template-columns:minmax(0,1fr)}
+  .event{grid-template-columns:72px minmax(0,1fr);gap:16px}
+  .event .btn{grid-column:1/-1;justify-self:start}
+  .cal b{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="logo.png" alt=""><div>Wilderness Medicine<small>Georgetown School of Medicine</small></div></a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#events">Events</a>
+      <a href="#skills">Skills</a>
+      <a href="#elective">Elective</a>
+      <a href="#team">Team</a>
+      <a class="btn btn-gold" href="#join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="medal"><img src="logo.png" alt="Georgetown University School of Medicine logo"></div>
+      <div class="eyebrow">Georgetown University School of Medicine</div>
+      <h1>Wilderness Medicine</h1>
+      <div class="dateline">Medicine for when there is no hospital</div>
+      <p class="lead">Hands-on workshops, trail days and seminars that teach GUSOM students to assess, treat and evacuate patients with whatever is in the pack.</p>
+      <div class="cta">
+        <a class="btn btn-pine" href="#events">Upcoming events</a>
+        <a class="btn btn-line" href="#join">Join the group</a>
+      </div>
+      <div class="next" id="next" hidden><b>Next up</b><span id="next-text"></span></div>
+    </div>
+    <svg class="scene" viewBox="0 0 1440 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9824a"/><stop offset="1" stop-color="#c4683f"/></linearGradient>
+        <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b4573a"/><stop offset="1" stop-color="#94473a"/></linearGradient>
+        <linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8c4f4a"/><stop offset="1" stop-color="#5e3a3d"/></linearGradient>
+        <symbol id="pine" viewBox="0 0 40 100"><path d="M20 0 L29 26 H24 L34 52 H27 L39 82 H23 V100 H17 V82 H1 L13 52 H6 L16 26 H11 Z"/></symbol>
+      </defs>
+      <circle cx="860" cy="150" r="46" fill="#fff3d6" opacity=".9"/>
+      <g fill="#fff" opacity=".75"><ellipse cx="300" cy="70" rx="70" ry="9"/><ellipse cx="340" cy="60" rx="40" ry="10"/><ellipse cx="1220" cy="90" rx="60" ry="8"/></g>
+      <path fill="url(#r1)" d="M0 210 L120 150 L230 190 L380 110 L520 180 L640 140 L760 190 L900 120 L1040 175 L1180 105 L1320 170 L1440 130 V380 H0Z"/>
+      <path fill="url(#r2)" d="M0 250 L160 190 L300 240 L450 175 L600 235 L760 180 L900 240 L1060 185 L1220 245 L1360 200 L1440 225 V380 H0Z"/>
+      <path fill="url(#r3)" d="M0 290 L200 245 L380 285 L560 250 L760 290 L960 255 L1160 292 L1320 262 L1440 280 V380 H0Z"/>
+      <g id="pines" fill="#17323f"></g>
+      <rect x="0" y="352" width="1440" height="30" fill="#17323f"/>
+    </svg>
+  </div>
+  <div class="facts-band">
+    <dl class="facts">
+      <div><dt>Founded with</dt><dd data-text="advisor"></dd></div>
+      <div><dt>Format</dt><dd>Workshops, trail days, seminars</dd></div>
+      <div><dt>Home base</dt><dd>3900 Reservoir Rd NW</dd></div>
+      <div><dt>Open to</dt><dd>All GUSOM students, M1 to M4</dd></div>
+    </dl>
+  </div>
+
+  <section id="about">
+    <div class="wrap split">
+      <div>
+        <span class="tag">Who we are</span>
+        <h2>Care beyond the trailhead</h2>
+        <p class="intro">The Georgetown SOM Wilderness Medicine Group was established with the help of Dr. Matthew Wilson of Georgetown Emergency Medicine. We teach students the basics of wilderness medicine through in-person workshops and online seminars, and we get outside as often as the curriculum allows.</p>
+        <ul class="goes">
+          <li><strong>Hands-on skills</strong> you can practice in a parking lot and use on a ridgeline.</li>
+          <li><strong>Field days</strong> on trails and rivers within an hour of the Hilltop.</li>
+          <li><strong>A path forward</strong> to the M4 elective, WFA and WFR courses, and the Wilderness Medical Society.</li>
+        </ul>
+      </div>
+      <div class="terrain" aria-label="Environments we cover">
+        <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#17323f"/><path d="M8 26c4-4 8 4 12 0s8 4 12 0 4 0 4 0M8 32c4-4 8 4 12 0s8 4 12 0" stroke="#f7c46a" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="22" cy="15" r="4" fill="#f0a93b"/></svg>Water and diving</div>
+        <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#17323f"/><path d="M8 32 L18 16 L24 24 L28 19 L36 32Z" fill="#b4573a"/><path d="M18 16 L21 21 L15 21Z" fill="#fff"/></svg>Mountain and alpine</div>
+        <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#17323f"/><g stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M22 10v24M12 16l20 12M12 28l20-12"/></g></svg>Snow and cold</div>
+        <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#17323f"/><rect x="12" y="14" width="20" height="16" rx="3" fill="#f0a93b"/><path d="M22 17v10M17 22h10" stroke="#17323f" stroke-width="3" stroke-linecap="round"/></svg>Rescue and evacuation</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="alt">
+    <div class="wrap">
+      <span class="tag">Get outside</span>
+      <h2>Upcoming events</h2>
+      <p class="intro">Workshops run on campus; trail and river days leave from the Med-Dent loop. Spots on field trips are limited, so RSVP early.</p>
+      <ul class="events" id="event-list"></ul>
+      <p class="empty" id="no-events" hidden>No events posted right now. Follow us on Instagram for the next one.</p>
+      <p class="note" id="sample-note">Sample schedule shown. Replace it in the EDIT HERE block at the bottom of the page.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <span class="tag">What you'll learn</span>
+      <h2>Skills workshops</h2>
+      <p class="intro">Each workshop pairs a short talk with an hour of practice on each other, moulage and whatever gear we can improvise.</p>
+      <div class="cards" id="skill-list"></div>
+    </div>
+  </section>
+
+  <section id="elective" class="dark">
+    <div class="wrap">
+      <span class="tag">For fourth-years</span>
+      <h2>The Wilderness Medicine elective</h2>
+      <p class="intro">EMED-507 is a two-week M4 elective run by Georgetown Emergency Medicine and offered since 2013. Students spend two weeks learning what to do when help is hours away, finishing with an overnight climbing trip in West Virginia.</p>
+      <div class="elective">
+        <ol class="stops">
+          <li><b>Billy Goat Trail, Great Falls</b><span>Evacuating injured hikers, improvised litters and slings, and "sleeper" scenarios sprung mid-hike.</span></li>
+          <li><b>Potomac River</b><span>Swift-water safety and rescue with professional instructors from Calleva Outdoors.</span></li>
+          <li><b>Classroom days</b><span>Toxicology, hyperbarics, aerospace and space medicine, disaster triage and sports medicine experts.</span></li>
+          <li><b>Seneca Rocks, West Virginia</b><span>Overnight camping, guided rock climbing and campfire capstone talks on toxic plants and animals.</span></li>
+        </ol>
+        <div class="ecard">
+          <h3>Course directors</h3>
+          <p>Maria Lawrynowicz, MD (M'18) and Chloe McCoy, MD, PhD, FAWM, both assistant professors of emergency medicine.</p>
+          <h3>Topics include</h3>
+          <ul>
+            <li>Altitude illness, hypothermia and heat illness</li>
+            <li>Drowning and snakebite</li>
+            <li>Hunting and fishing injuries</li>
+            <li>In-flight medical emergencies</li>
+            <li>Disaster triage</li>
+          </ul>
+          <h3>Assessment</h3>
+          <p>An open-book, collaborative final exam.</p>
+          <p style="margin-top:20px"><a class="more" data-link="electiveStory" href="#">Read the GUMC story</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="alt">
+    <div class="wrap">
+      <span class="tag">Our people</span>
+      <h2>Faculty and leadership</h2>
+      <div class="people" id="faculty-list"></div>
+      <div id="board-wrap" hidden>
+        <h3 class="sub-h">Student board</h3>
+        <div class="people" id="board-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="wrap">
+      <span class="tag">Keep exploring</span>
+      <h2>Resources</h2>
+      <div class="res">
+        <a data-link="wms" href="#"><b>Wilderness Medical Society</b><span>Student membership, the national conference and the FAWM fellowship.</span></a>
+        <a data-link="nols" href="#"><b>NOLS Wilderness Medicine</b><span>Wilderness First Aid and Wilderness First Responder courses.</span></a>
+        <a data-link="outdoorEd" href="#"><b>GU Outdoor Education</b><span>Main-campus trips and guide training on the Hilltop.</span></a>
+      </div>
+      <div class="panel">
+        <div>
+          <h3>Join the Wilderness Medicine Group</h3>
+          <p>Get event RSVPs and trip sign-ups in your inbox. Email us at <span class="email" data-text="email"></span> or follow along on Instagram.</p>
+        </div>
+        <a class="btn" data-link="emailJoin" href="#">Email the group</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Georgetown Wilderness Medicine</h4>
+      <p>A student organization of Georgetown University School of Medicine, supported by the Department of Emergency Medicine.</p>
+      <p class="disclaim">Workshops are educational and do not grant certification. Field events follow GUSOM student organization policies.</p>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <ul>
+        <li><a data-link="electiveStory" href="#">Elective story</a></li>
+        <li><a data-link="clubs" href="#">GUSOM student clubs</a></li>
+        <li><a data-link="instagram" href="#">Instagram</a></li>
+        <li><a data-link="wms" href="#">Wilderness Medical Society</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a data-link="email" href="#"><span data-text="email"></span></a></li>
+        <li>Georgetown University School of Medicine</li>
+        <li>3900 Reservoir Road NW, Washington, DC</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+/* ============ EDIT HERE ============
+   Everything that changes semester to semester lives in this block. */
+const SITE = {
+  email: "gusom.wilderness@gmail.com",
+  advisor: "Dr. Matthew Wilson",
+  sampleEvents: true, // set to false once the events below are real
+  links: {
+    electiveStory: "https://meded.georgetown.edu/?p=25805",
+    clubs: "https://meded.georgetown.edu/?p=1697",
+    instagram: "https://www.instagram.com/", // TODO: add the group's handle
+    wms: "https://wms.org/",
+    nols: "https://www.nols.edu/",
+    outdoorEd: "https://getinvolved.georgetown.edu/outdoor-ed/"
+  },
+  // date as YYYY-MM-DD; past events hide themselves. link: "" uses the RSVP email.
+  events: [
+    { date: "2026-12-05", title: "Improvised splints and litters", where: "Med-Dent courtyard", kind: "Workshop",
+      blurb: "SAM splints, trekking-pole traction and a six-person blanket litter carry.", link: "" },
+    { date: "2027-01-23", title: "Cold injury and hypothermia night", where: "Med-Dent, room TBA", kind: "Seminar",
+      blurb: "Frostbite staging, rewarming and the hypothermia wrap, with a winter-camping gear check.", link: "" },
+    { date: "2027-02-20", title: "Wound care and suturing in the field", where: "Clinical skills center", kind: "Workshop",
+      blurb: "Irrigation with what's in your pack, closure options and when to leave a wound open.", link: "" },
+    { date: "2027-03-27", title: "Billy Goat Trail scenario day", where: "Great Falls, Maryland", kind: "Trail day",
+      blurb: "A hike with mock patients hidden along the route. Patient packaging and carry-out.", link: "" },
+    { date: "2027-04-24", title: "Potomac swift-water awareness", where: "Potomac River", kind: "Field trip",
+      blurb: "Throw bags, self-rescue and reading moving water with professional instructors.", link: "" }
+  ],
+  skills: [
+    { icon: "splint", title: "Splinting and orthopedics", text: "Improvised splints, reductions worth knowing and when to walk out." },
+    { icon: "bandage", title: "Wound management", text: "Irrigation, closure and infection prevention far from a sink." },
+    { icon: "litter", title: "Evacuation", text: "Patient packaging, litters and slings from field materials." },
+    { icon: "thermo", title: "Heat and cold", text: "Hypothermia, frostbite, heat exhaustion and heat stroke." },
+    { icon: "mountain", title: "Altitude", text: "AMS, HAPE and HACE: prevention, recognition and descent." },
+    { icon: "wave", title: "Water and dive", text: "Drowning, swift-water safety and diving injuries." },
+    { icon: "snake", title: "Bites and stings", text: "Snakebite, anaphylaxis and toxic plants of the Mid-Atlantic." },
+    { icon: "compass", title: "Navigation and triage", text: "Map and compass, plus multi-casualty triage in the field." }
+  ],
+  faculty: [
+    { name: "Matthew Wilson, MD", role: "Faculty advisor, Georgetown Emergency Medicine" },
+    { name: "Maria Lawrynowicz, MD", role: "Wilderness Medicine elective co-director" },
+    { name: "Chloe McCoy, MD, PhD, FAWM", role: "Wilderness Medicine elective co-director" }
+  ],
+  // add student leaders here, e.g. { name: "First Last", role: "President, M2" }; the section shows once this has names
+  board: []
+};
+/* =================================== */
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const text = { email: SITE.email, advisor: SITE.advisor };
+document.querySelectorAll("[data-text]").forEach(el => { el.textContent = text[el.dataset.text]; });
+
+const links = Object.assign({}, SITE.links, {
+  email: "mailto:" + SITE.email,
+  emailJoin: "mailto:" + SITE.email + "?subject=" + encodeURIComponent("Joining the Wilderness Medicine Group")
+});
+document.querySelectorAll("[data-link]").forEach(a => {
+  a.href = links[a.dataset.link];
+  if (!a.href.startsWith("mailto:")) { a.target = "_blank"; a.rel = "noopener"; }
+});
+
+/* pines along the treeline */
+const pines = document.getElementById("pines");
+let out = "", x = -20, seed = 7;
+const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+while (x < 1460) {
+  const h = 70 + rnd() * 70, w = h * 0.42;
+  out += `<use href="#pine" x="${x.toFixed(0)}" y="${(360 - h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}"/>`;
+  x += w * (0.45 + rnd() * 0.5);
+}
+pines.innerHTML = out;
+
+/* events */
+const today = new Date(); today.setHours(0, 0, 0, 0);
+const upcoming = SITE.events.map(e => Object.assign({}, e, { d: new Date(e.date + "T12:00:00") }))
+  .filter(e => e.d >= today).sort((a, b) => a.d - b.d);
+const mon = d => d.toLocaleString("en-US", { month: "short" });
+document.getElementById("event-list").innerHTML = upcoming.map(e => {
+  const href = e.link || "mailto:" + SITE.email + "?subject=" + encodeURIComponent("RSVP: " + e.title);
+  const ext = e.link ? ' target="_blank" rel="noopener"' : "";
+  return `<li class="event">
+    <div class="cal"><span>${mon(e.d)}</span><b>${e.d.getDate()}</b></div>
+    <div><h3>${esc(e.title)} <span class="pill">${esc(e.kind)}</span></h3>
+      <div class="where">${esc(e.where)} | ${e.d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</div>
+      <p>${esc(e.blurb)}</p></div>
+    <a class="btn btn-pine" href="${esc(href)}"${ext}>RSVP</a></li>`;
+}).join("");
+document.getElementById("no-events").hidden = upcoming.length > 0;
+document.getElementById("sample-note").hidden = !SITE.sampleEvents;
+if (upcoming.length) {
+  const n = upcoming[0];
+  document.getElementById("next-text").textContent = `${n.title}, ${mon(n.d)} ${n.d.getDate()}`;
+  document.getElementById("next").hidden = false;
+}
+
+/* skills */
+const ICONS = {
+  splint: '<path d="M8 4v16M16 4v16M6 8h12M6 16h12"/>',
+  bandage: '<rect x="3" y="8" width="18" height="8" rx="4" transform="rotate(-35 12 12)"/><path d="M11 11h2M11 13h2"/>',
+  litter: '<path d="M3 15h18M5 15l-2 4M19 15l2 4M7 15V9M17 15V9M7 11h10"/>',
+  thermo: '<path d="M10 4a2 2 0 0 1 4 0v10a4 4 0 1 1-4 0z"/><path d="M12 9v7"/>',
+  mountain: '<path d="M2 20l7-12 4 6 3-4 6 10z"/>',
+  wave: '<path d="M2 10c3-3 5 3 8 0s5 3 8 0 4 0 4 0M2 16c3-3 5 3 8 0s5 3 8 0 4 0 4 0"/>',
+  snake: '<path d="M4 18c3 0 3-4 6-4s3 4 6 4 3-6 0-8-6-1-6-4 3-3 5-3"/><path d="M18 3l2 1"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'
+};
+document.getElementById("skill-list").innerHTML = SITE.skills.map(s =>
+  `<div class="card"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[s.icon] || ""}</svg></div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>`
+).join("");
+
+/* people */
+const initials = n => n.replace(/,.*$/, "").split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join("");
+const person = p => `<div class="person"><div class="avatar" aria-hidden="true">${esc(initials(p.name))}</div><div><b>${esc(p.name)}</b><span>${esc(p.role)}</span></div></div>`;
+document.getElementById("faculty-list").innerHTML = SITE.faculty.map(person).join("");
+if (SITE.board.length) {
+  document.getElementById("board-list").innerHTML = SITE.board.map(person).join("");
+  document.getElementById("board-wrap").hidden = false;
+}
+}
+</script>
+</body>
+</html>
